@@ -1,6 +1,6 @@
 # WorkLab
 
-![WorkLab Logo](assets/images/worklab logo.png)
+![WorkLab Logo](assets/images/worklab%20logo.png)
 
 WorkLab is a simple mobile application designed to help you log your work hours locally and view summaries. It's built with Expo and React Native, focusing on a straightforward user experience without the need for a backend, storing all data directly on your device.
 

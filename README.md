@@ -1,50 +1,104 @@
-# Welcome to your Expo app 👋
+# WorkLab
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+![WorkLab Logo](assets/images/worklab logo.png)
 
-## Get started
+WorkLab is a simple mobile application designed to help you log your work hours locally and view summaries. It's built with Expo and React Native, focusing on a straightforward user experience without the need for a backend, storing all data directly on your device.
 
-1. Install dependencies
+## ✨ Features
 
-   ```bash
-   npm install
-   ```
+*   **Log Work Sessions:**
+    *   **Automatic Timer:** Start and stop a timer to automatically record your work sessions.
+    *   **Project Name:** Assign a project or description to each session.
+*   **View Logs:**
+    *   Daily lists of all logged sessions.
+    *   Each entry displays project name, start-end time, and duration.
+*   **Summary:**
+    *   Total hours worked per day.
+    *   Simple weekly total overview.
+*   **Edit/Delete Logs:**
+    *   Ability to remove individual log entries.
 
-2. Start the app
+## 🚀 Getting Started
 
-   ```bash
-   npx expo start
-   ```
+### Prerequisites
 
-In the output, you'll find options to open the app in a
+Make sure you have Node.js and npm (or yarn) installed.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+### Installation
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+1.  Clone the repository:
+    ```bash
+    git clone <repository-url>
+    cd work-lab
+    ```
+2.  Install dependencies:
+    ```bash
+    npm install
+    # or
+    yarn install
+    ```
 
-## Get a fresh project
+### Running the App
 
-When you're ready, run:
+#### On Android
 
-```bash
-npm run reset-project
+1.  **Start the Expo development server:**
+    ```bash
+    npm start
+    # or
+    yarn start
+    ```
+2.  **Open on Android device/emulator:**
+    *   Scan the QR code displayed in your terminal with the Expo Go app on your Android device.
+    *   Or, press `a` in the terminal to open it on an Android emulator.
+
+#### On iOS
+
+1.  **Start the Expo development server:**
+    ```bash
+    npm start
+    # or
+    yarn start
+    ```
+2.  **Open on iOS device/simulator:**
+    *   Scan the QR code displayed in your terminal with the Expo Go app on your iOS device.
+    *   Or, press `i` in the terminal to open it on an iOS simulator.
+
+## 🏗️ Architecture
+
+WorkLab follows a simple, local-only architecture.
+
+```
++-------------------+
+|                   |
+|   Mobile Device   |
+|                   |
+| +-----------------+---+
+| | React Native App    |
+| |                   |
+| | +---------------+ |
+| | | UI Components | |
+| | | (React Native | |
+| | |   Paper)      | |
+| | +-------+-------+ |
+| |         |         |
+| | +-------v-------+ |
+| | | WorkSession   | |
+| | |   Context     | |
+| | | (State Mgmt)  | |
+| | +-------+-------+ |
+| |         |         |
+| | +-------v-------+ |
+| | | AsyncStorage  | |
+| | | (Local Storage)| |
+| | +---------------+ |
+| +-------------------+
+|                   |
++-------------------+
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+**Explanation:**
 
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+*   **UI Components:** The user interface is built using React Native components, styled with React Native Paper for a consistent look and feel.
+*   **WorkSession Context:** This acts as the central state management for all work session data, providing functions to add, update, and delete sessions.
+*   **AsyncStorage:** All work session data is persistently stored locally on the device using `AsyncStorage`, ensuring data is saved even when the app is closed. There is no external backend or cloud storage involved.
